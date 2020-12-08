@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1`] = `
+Object {
+  "Resources": Object {
+    "mytopicDA9518A7": Object {
+      "Type": "AWS::SNS::Topic",
+    },
+  },
+}
+`;
