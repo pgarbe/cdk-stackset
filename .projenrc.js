@@ -1,7 +1,7 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.77.0',
+  cdkVersion: '1.83.0',
   name: 'cdk-stackset',
   cdkDependencies: [
     '@aws-cdk/aws-cloudformation',
