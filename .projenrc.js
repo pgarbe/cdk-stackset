@@ -1,8 +1,10 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.83.0',
+  cdkVersion: '1.95.1',
   name: 'cdk-stackset',
+  defaultReleaseBranch: 'main',
+
   cdkDependencies: [
     '@aws-cdk/aws-cloudformation',
     '@aws-cdk/aws-codebuild',
@@ -15,13 +17,10 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-sns',
     '@aws-cdk/pipelines',
   ],
-  deps: [
-    'cdk-iam-floyd',
-  ],
+  deps: ['cdk-iam-floyd'],
   context: {
     '@aws-cdk/core:newStyleStackSynthesis': 'true',
   },
-
 });
 
 project.synth();
