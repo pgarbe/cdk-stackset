@@ -4,9 +4,9 @@ const project = new pj.awscdk.AwsCdkConstructLibrary({
   name: 'cdk-stackset',
   defaultReleaseBranch: 'main',
 
-  repositoryUrl: 'https://github.com/pgarbe/cdk-stackset',
+  repositoryUrl: 'https://github.com/pgarbe/cdk-stackset.git',
   author: 'Philipp Garbe',
-  authorAddress: 'https://garbe.io',
+  authorAddress: 'https://github.com/pgarbe',
 
   projenrcTs: true,
 
