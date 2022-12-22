@@ -1,0 +1,12 @@
+{
+  "version": "22.0.0",
+  "testCases": {
+    "DifferentArchitectures/DefaultTest": {
+      "stacks": [
+        "cdk-stackset-integration-test"
+      ],
+      "assertionStack": "DifferentArchitectures/DefaultTest/DeployAssert",
+      "assertionStackName": "DifferentArchitecturesDefaultTestDeployAssertA11A8F8D"
+    }
+  }
+}

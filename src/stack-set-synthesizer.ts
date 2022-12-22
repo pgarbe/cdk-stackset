@@ -20,6 +20,6 @@ export class StackSetSynthesizer extends cdk.DefaultStackSynthesizer {
   }
 
   public addDockerImageAsset(_asset: cdk.DockerImageAssetSource): cdk.DockerImageAssetLocation {
-    throw new Error('StackSet Stacks cannot use Docker Image Assets');
+    throw new Error('StackSet Stacks do not support Docker Image Assets, yet');
   }
 }

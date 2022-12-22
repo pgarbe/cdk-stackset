@@ -10,6 +10,7 @@ export class StackSetStack extends cdk.Stack {
 
   private _templateUrl?: string;
   private _parentStack: cdk.Stack;
+  private _sharedFileAssetBucketName?: string;
 
   constructor(scope: Construct, id: string) {
     const parentStack = findParentStack(scope);
@@ -22,6 +23,17 @@ export class StackSetStack extends cdk.Stack {
 
     // this is the file name of the synthesized template file within the cloud assembly
     this.templateFile = `${cdk.Names.uniqueId(this)}.stackset.template.json`;
+  }
+
+  /**
+   * Allows to set the bucket of the StackSetStack synthesizer
+   *
+   * @param bucketName name of bucket for shared assets
+   *
+   * @internal
+   */
+  public _setAssetBucketName(bucketName: string) {
+    this._sharedFileAssetBucketName = bucketName;
   }
 
   /**
@@ -55,13 +67,12 @@ export class StackSetStack extends cdk.Stack {
   public _synthesizeTemplate(session: cdk.ISynthesisSession): void {
     let cfn = JSON.stringify(this._toCloudFormation(), undefined, 2);
 
-    // const fileAssetBucketName = `cdk-hnb659fds-assets-${this.account}-${this.region}`;
     const fileAssetBucketName = 'cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}';
-    const sharedFileAssetBucketName = `cdk-assets-shared-${this.node.id.toLowerCase()}`;
+    // const sharedFileAssetBucketName = `cdk-assets-shared-${this.node.id.toLowerCase()}`;
 
     // Ensure that assets in the template use the shared assets bucket
     // But in the manifest, all assets needs to be uploaded to the cdk bootstrap bucket
-    cfn = cfn.replace(fileAssetBucketName, sharedFileAssetBucketName);
+    cfn = cfn.replace(fileAssetBucketName, this._sharedFileAssetBucketName || '');
 
     const templateHash = crypto.createHash('sha256').update(cfn).digest('hex');
 

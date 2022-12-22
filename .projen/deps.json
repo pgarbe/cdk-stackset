@@ -1,6 +1,14 @@
 {
   "dependencies": [
     {
+      "name": "@aws-cdk/integ-runner",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/integ-tests-alpha",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "version": "^27",
       "type": "build"

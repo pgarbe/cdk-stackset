@@ -146,6 +146,7 @@ Check whether the given construct is a Resource.
 | <code><a href="#cdk-stackset.StackSet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-stackset.StackSet.property.env">env</a></code> | <code>aws-cdk-lib.ResourceEnvironment</code> | The environment this resource belongs to. |
 | <code><a href="#cdk-stackset.StackSet.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this resource is defined. |
+| <code><a href="#cdk-stackset.StackSet.property.sharedAssetBucket">sharedAssetBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | *No description.* |
 
 ---
 
@@ -189,6 +190,16 @@ public readonly stack: Stack;
 - *Type:* aws-cdk-lib.Stack
 
 The stack in which this resource is defined.
+
+---
+
+##### `sharedAssetBucket`<sup>Required</sup> <a name="sharedAssetBucket" id="cdk-stackset.StackSet.property.sharedAssetBucket"></a>
+
+```typescript
+public readonly sharedAssetBucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
 
 ---
 
