@@ -136,7 +136,7 @@ it('should match all possible snapshots', () => {
   });
 
   expect(template).toMatchSnapshot();
-  expect(readJson(session.directory, 'parent.assets.json')).toMatchSnapshot();
+  expect(readJson(session.directory, 'Parent.assets.json')).toMatchSnapshot();
 
   const stackSetA = Template.fromJSON(readJson(session.directory, 'ParentTemplateA8A21BF8C.stackset.template.json'));
   expect(stackSetA).toMatchSnapshot();

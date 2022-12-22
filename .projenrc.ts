@@ -17,7 +17,7 @@ const project = new pj.awscdk.AwsCdkConstructLibrary({
 project.addGitIgnore('cdk-integ.out.*.snapshot');
 
 project.addTask('integ:update', {
-  exec: 'npx integ-runner --app="ts-node {filePath}" --parallel-regions eu-central-1 --test-regex \'.*integ\\.[\\w\\d-]*.ts$\' --update-on-failed -v -v -v -v',
+  exec: 'npx integ-runner --app="ts-node {filePath}" --parallel-regions eu-central-1 --test-regex \'.*integ\\.[\\w\\d-]*.ts$\' --update-on-failed -v -v -v -v --force',
 });
 project.testTask.spawn(project.addTask('integ', {
   exec: 'npx integ-runner --app="ts-node {filePath}" --parallel-regions eu-central-1 --test-regex \'.*integ\\.[\\w\\d-]*.ts$\'',

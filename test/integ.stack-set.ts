@@ -45,7 +45,18 @@ new IntegTest(app, 'IntegTest', {
 //   StackSetName: 'MyStackSetStackName',
 // });
 
-// const result = integ.assertions.awsApiCall('S3', 'listObjects', {
+// const apiCall = integ.assertions.awsApiCall('S3', 'listObjects', {
 //   Bucket: 'cdk-assets-shared-template-stackset',
 // });
-// result.expect(ExpectedResult.objectLike({ Payload: 'OK' }));
+
+// apiCall.provider.addToRolePolicy({
+//   Effect: 'Allow',
+//   Action: ['s3:GetObject', 's3:ListBucket'],
+//   Resource: ['*'],
+// });
+
+// apiCall.expect(ExpectedResult.objectLike({ Payload: 'OK' }));
+
+// TODO: Check that the template links to the shared bucket
+
+app.synth();

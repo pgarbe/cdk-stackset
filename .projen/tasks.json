@@ -142,7 +142,7 @@
       "name": "integ:update",
       "steps": [
         {
-          "exec": "npx integ-runner --app=\"ts-node {filePath}\" --parallel-regions eu-central-1 --test-regex '.*integ\\.[\\w\\d-]*.ts$' --update-on-failed -v -v -v -v"
+          "exec": "npx integ-runner --app=\"ts-node {filePath}\" --parallel-regions eu-central-1 --test-regex '.*integ\\.[\\w\\d-]*.ts$' --update-on-failed -v -v -v -v --force"
         }
       ]
     },

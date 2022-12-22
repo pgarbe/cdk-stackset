@@ -2,7 +2,7 @@
   "name": "cdk-stackset",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pgarbe/cdk-stackset"
+    "url": "https://github.com/pgarbe/cdk-stackset.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -32,7 +32,7 @@
   },
   "author": {
     "name": "Philipp Garbe",
-    "url": "https://garbe.io",
+    "url": "https://github.com/pgarbe",
     "organization": false
   },
   "devDependencies": {
