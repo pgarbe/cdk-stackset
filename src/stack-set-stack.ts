@@ -65,10 +65,13 @@ export class StackSetStack extends cdk.Stack {
    * @internal
    */
   public _synthesizeTemplate(session: cdk.ISynthesisSession): void {
+
     let cfn = JSON.stringify(this._toCloudFormation(), undefined, 2);
 
-    const fileAssetBucketName = 'cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}';
-    // const sharedFileAssetBucketName = `cdk-assets-shared-${this.node.id.toLowerCase()}`;
+    const account = this._parentStack.account.indexOf('Token') < 0 ? this._parentStack.account : '${AWS::AccountId}';
+    const region = this._parentStack.region.indexOf('Token') < 0 ? this._parentStack.region : '${AWS::Region}';
+
+    const fileAssetBucketName = `cdk-hnb659fds-assets-${account}-${region}`;
 
     // Ensure that assets in the template use the shared assets bucket
     // But in the manifest, all assets needs to be uploaded to the cdk bootstrap bucket

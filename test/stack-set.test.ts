@@ -79,6 +79,21 @@ it('should have a bucket with unique id based on stack and StackSet id', () => {
   });
 });
 
+it('Template for StackSet should contain shared asset bucket if env is set', () => {
+  const app = new cdk.App();
+  new MyStackSetStack(app, 'Parent', { env: { account: '123456789012', region: 'eu-west-1' } });
+
+  const session = app.synth();
+
+  const template = Template.fromJSON(readJson(session.directory, 'ParentTemplate0B4BAA82.stackset.template.json'));
+  template.hasResourceProperties('AWS::Lambda::Function', {
+    Code: {
+      S3Bucket: 'cdk-assets-shared-template-stackset',
+      S3Key: 'eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8.zip',
+    },
+  });
+});
+
 it('Template for StackSet should contain shared asset bucket', () => {
   const app = new cdk.App();
   new MyStackSetStack(app, 'Parent');
