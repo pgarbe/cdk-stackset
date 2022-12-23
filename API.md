@@ -204,30 +204,30 @@ public readonly sharedAssetBucket: IBucket;
 ---
 
 
-### StackSetStack <a name="StackSetStack" id="cdk-stackset.StackSetStack"></a>
+### StackSetTemplateStack <a name="StackSetTemplateStack" id="cdk-stackset.StackSetTemplateStack"></a>
 
-#### Initializers <a name="Initializers" id="cdk-stackset.StackSetStack.Initializer"></a>
+#### Initializers <a name="Initializers" id="cdk-stackset.StackSetTemplateStack.Initializer"></a>
 
 ```typescript
-import { StackSetStack } from 'cdk-stackset'
+import { StackSetTemplateStack } from 'cdk-stackset'
 
-new StackSetStack(scope: Construct, id: string)
+new StackSetTemplateStack(scope: Construct, id: string)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-stackset.StackSetStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#cdk-stackset.StackSetStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="cdk-stackset.StackSetStack.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="cdk-stackset.StackSetTemplateStack.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="cdk-stackset.StackSetStack.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="cdk-stackset.StackSetTemplateStack.Initializer.parameter.id"></a>
 
 - *Type:* string
 
@@ -237,24 +237,24 @@ new StackSetStack(scope: Construct, id: string)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#cdk-stackset.StackSetStack.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#cdk-stackset.StackSetStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
-| <code><a href="#cdk-stackset.StackSetStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
-| <code><a href="#cdk-stackset.StackSetStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
-| <code><a href="#cdk-stackset.StackSetStack.exportStringListValue">exportStringListValue</a></code> | Create a CloudFormation Export for a string list value. |
-| <code><a href="#cdk-stackset.StackSetStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a string value. |
-| <code><a href="#cdk-stackset.StackSetStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
-| <code><a href="#cdk-stackset.StackSetStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
-| <code><a href="#cdk-stackset.StackSetStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
-| <code><a href="#cdk-stackset.StackSetStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
-| <code><a href="#cdk-stackset.StackSetStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
-| <code><a href="#cdk-stackset.StackSetStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
-| <code><a href="#cdk-stackset.StackSetStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
-| <code><a href="#cdk-stackset.StackSetStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.addDependency">addDependency</a></code> | Add a dependency between this stack and another stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.addMetadata">addMetadata</a></code> | Adds an arbitary key-value pair, with information you want to record about the stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.addTransform">addTransform</a></code> | Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.exportStringListValue">exportStringListValue</a></code> | Create a CloudFormation Export for a string list value. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.exportValue">exportValue</a></code> | Create a CloudFormation Export for a string value. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.formatArn">formatArn</a></code> | Creates an ARN from components. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.getLogicalId">getLogicalId</a></code> | Allocates a stack-unique CloudFormation-compatible logical identity for a specific resource. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.regionalFact">regionalFact</a></code> | Look up a fact value for the given fact for the region of this stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.renameLogicalId">renameLogicalId</a></code> | Rename a generated logical identities. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.reportMissingContextKey">reportMissingContextKey</a></code> | Indicate that a context key was expected. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.resolve">resolve</a></code> | Resolve a tokenized value in the context of the current stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.splitArn">splitArn</a></code> | Splits the provided ARN into its components. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.toJsonString">toJsonString</a></code> | Convert an object, potentially containing tokens, to a JSON string. |
 
 ---
 
-##### `toString` <a name="toString" id="cdk-stackset.StackSetStack.toString"></a>
+##### `toString` <a name="toString" id="cdk-stackset.StackSetTemplateStack.toString"></a>
 
 ```typescript
 public toString(): string
@@ -262,7 +262,7 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `addDependency` <a name="addDependency" id="cdk-stackset.StackSetStack.addDependency"></a>
+##### `addDependency` <a name="addDependency" id="cdk-stackset.StackSetTemplateStack.addDependency"></a>
 
 ```typescript
 public addDependency(target: Stack, reason?: string): void
@@ -273,19 +273,19 @@ Add a dependency between this stack and another stack.
 This can be used to define dependencies between any two stacks within an
 app, and also supports nested stacks.
 
-###### `target`<sup>Required</sup> <a name="target" id="cdk-stackset.StackSetStack.addDependency.parameter.target"></a>
+###### `target`<sup>Required</sup> <a name="target" id="cdk-stackset.StackSetTemplateStack.addDependency.parameter.target"></a>
 
 - *Type:* aws-cdk-lib.Stack
 
 ---
 
-###### `reason`<sup>Optional</sup> <a name="reason" id="cdk-stackset.StackSetStack.addDependency.parameter.reason"></a>
+###### `reason`<sup>Optional</sup> <a name="reason" id="cdk-stackset.StackSetTemplateStack.addDependency.parameter.reason"></a>
 
 - *Type:* string
 
 ---
 
-##### `addMetadata` <a name="addMetadata" id="cdk-stackset.StackSetStack.addMetadata"></a>
+##### `addMetadata` <a name="addMetadata" id="cdk-stackset.StackSetTemplateStack.addMetadata"></a>
 
 ```typescript
 public addMetadata(key: string, value: any): void
@@ -297,19 +297,19 @@ These get translated to the Metadata section of the generated template.
 
 > [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html)
 
-###### `key`<sup>Required</sup> <a name="key" id="cdk-stackset.StackSetStack.addMetadata.parameter.key"></a>
+###### `key`<sup>Required</sup> <a name="key" id="cdk-stackset.StackSetTemplateStack.addMetadata.parameter.key"></a>
 
 - *Type:* string
 
 ---
 
-###### `value`<sup>Required</sup> <a name="value" id="cdk-stackset.StackSetStack.addMetadata.parameter.value"></a>
+###### `value`<sup>Required</sup> <a name="value" id="cdk-stackset.StackSetTemplateStack.addMetadata.parameter.value"></a>
 
 - *Type:* any
 
 ---
 
-##### `addTransform` <a name="addTransform" id="cdk-stackset.StackSetStack.addTransform"></a>
+##### `addTransform` <a name="addTransform" id="cdk-stackset.StackSetTemplateStack.addTransform"></a>
 
 ```typescript
 public addTransform(transform: string): void
@@ -330,7 +330,7 @@ stack.addTransform('AWS::Serverless-2016-10-31')
 ```
 
 
-###### `transform`<sup>Required</sup> <a name="transform" id="cdk-stackset.StackSetStack.addTransform.parameter.transform"></a>
+###### `transform`<sup>Required</sup> <a name="transform" id="cdk-stackset.StackSetTemplateStack.addTransform.parameter.transform"></a>
 
 - *Type:* string
 
@@ -338,7 +338,7 @@ The transform to add.
 
 ---
 
-##### `exportStringListValue` <a name="exportStringListValue" id="cdk-stackset.StackSetStack.exportStringListValue"></a>
+##### `exportStringListValue` <a name="exportStringListValue" id="cdk-stackset.StackSetTemplateStack.exportStringListValue"></a>
 
 ```typescript
 public exportStringListValue(exportedValue: any, options?: ExportValueOptions): string[]
@@ -364,19 +364,19 @@ the resource and the manual export.
 
 # See `exportValue` for an example of this process.
 
-###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="cdk-stackset.StackSetStack.exportStringListValue.parameter.exportedValue"></a>
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="cdk-stackset.StackSetTemplateStack.exportStringListValue.parameter.exportedValue"></a>
 
 - *Type:* any
 
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="cdk-stackset.StackSetStack.exportStringListValue.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="cdk-stackset.StackSetTemplateStack.exportStringListValue.parameter.options"></a>
 
 - *Type:* aws-cdk-lib.ExportValueOptions
 
 ---
 
-##### `exportValue` <a name="exportValue" id="cdk-stackset.StackSetStack.exportValue"></a>
+##### `exportValue` <a name="exportValue" id="cdk-stackset.StackSetTemplateStack.exportValue"></a>
 
 ```typescript
 public exportValue(exportedValue: any, options?: ExportValueOptions): string
@@ -427,19 +427,19 @@ Instead, the process takes two deployments:
 - Don't forget to remove the `exportValue()` call as well.
 - Deploy again (this time only the `producerStack` will be changed -- the bucket will be deleted).
 
-###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="cdk-stackset.StackSetStack.exportValue.parameter.exportedValue"></a>
+###### `exportedValue`<sup>Required</sup> <a name="exportedValue" id="cdk-stackset.StackSetTemplateStack.exportValue.parameter.exportedValue"></a>
 
 - *Type:* any
 
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="cdk-stackset.StackSetStack.exportValue.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="cdk-stackset.StackSetTemplateStack.exportValue.parameter.options"></a>
 
 - *Type:* aws-cdk-lib.ExportValueOptions
 
 ---
 
-##### `formatArn` <a name="formatArn" id="cdk-stackset.StackSetStack.formatArn"></a>
+##### `formatArn` <a name="formatArn" id="cdk-stackset.StackSetTemplateStack.formatArn"></a>
 
 ```typescript
 public formatArn(components: ArnComponents): string
@@ -461,13 +461,13 @@ The required ARN pieces that are omitted will be taken from the stack that
 the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
 can be 'undefined'.
 
-###### `components`<sup>Required</sup> <a name="components" id="cdk-stackset.StackSetStack.formatArn.parameter.components"></a>
+###### `components`<sup>Required</sup> <a name="components" id="cdk-stackset.StackSetTemplateStack.formatArn.parameter.components"></a>
 
 - *Type:* aws-cdk-lib.ArnComponents
 
 ---
 
-##### `getLogicalId` <a name="getLogicalId" id="cdk-stackset.StackSetStack.getLogicalId"></a>
+##### `getLogicalId` <a name="getLogicalId" id="cdk-stackset.StackSetTemplateStack.getLogicalId"></a>
 
 ```typescript
 public getLogicalId(element: CfnElement): string
@@ -483,7 +483,7 @@ This method uses the protected method `allocateLogicalId` to render the
 logical ID for an element. To modify the naming scheme, extend the `Stack`
 class and override this method.
 
-###### `element`<sup>Required</sup> <a name="element" id="cdk-stackset.StackSetStack.getLogicalId.parameter.element"></a>
+###### `element`<sup>Required</sup> <a name="element" id="cdk-stackset.StackSetTemplateStack.getLogicalId.parameter.element"></a>
 
 - *Type:* aws-cdk-lib.CfnElement
 
@@ -491,7 +491,7 @@ The CloudFormation element for which a logical identity is needed.
 
 ---
 
-##### `regionalFact` <a name="regionalFact" id="cdk-stackset.StackSetStack.regionalFact"></a>
+##### `regionalFact` <a name="regionalFact" id="cdk-stackset.StackSetTemplateStack.regionalFact"></a>
 
 ```typescript
 public regionalFact(factName: string, defaultValue?: string): string
@@ -515,19 +515,19 @@ not have to worry about regional facts.
 If `defaultValue` is not given, it is an error if the fact is unknown for
 the given region.
 
-###### `factName`<sup>Required</sup> <a name="factName" id="cdk-stackset.StackSetStack.regionalFact.parameter.factName"></a>
+###### `factName`<sup>Required</sup> <a name="factName" id="cdk-stackset.StackSetTemplateStack.regionalFact.parameter.factName"></a>
 
 - *Type:* string
 
 ---
 
-###### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="cdk-stackset.StackSetStack.regionalFact.parameter.defaultValue"></a>
+###### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="cdk-stackset.StackSetTemplateStack.regionalFact.parameter.defaultValue"></a>
 
 - *Type:* string
 
 ---
 
-##### `renameLogicalId` <a name="renameLogicalId" id="cdk-stackset.StackSetStack.renameLogicalId"></a>
+##### `renameLogicalId` <a name="renameLogicalId" id="cdk-stackset.StackSetTemplateStack.renameLogicalId"></a>
 
 ```typescript
 public renameLogicalId(oldId: string, newId: string): void
@@ -538,19 +538,19 @@ Rename a generated logical identities.
 To modify the naming scheme strategy, extend the `Stack` class and
 override the `allocateLogicalId` method.
 
-###### `oldId`<sup>Required</sup> <a name="oldId" id="cdk-stackset.StackSetStack.renameLogicalId.parameter.oldId"></a>
+###### `oldId`<sup>Required</sup> <a name="oldId" id="cdk-stackset.StackSetTemplateStack.renameLogicalId.parameter.oldId"></a>
 
 - *Type:* string
 
 ---
 
-###### `newId`<sup>Required</sup> <a name="newId" id="cdk-stackset.StackSetStack.renameLogicalId.parameter.newId"></a>
+###### `newId`<sup>Required</sup> <a name="newId" id="cdk-stackset.StackSetTemplateStack.renameLogicalId.parameter.newId"></a>
 
 - *Type:* string
 
 ---
 
-##### `reportMissingContextKey` <a name="reportMissingContextKey" id="cdk-stackset.StackSetStack.reportMissingContextKey"></a>
+##### `reportMissingContextKey` <a name="reportMissingContextKey" id="cdk-stackset.StackSetTemplateStack.reportMissingContextKey"></a>
 
 ```typescript
 public reportMissingContextKey(report: MissingContext): void
@@ -561,7 +561,7 @@ Indicate that a context key was expected.
 Contains instructions which will be emitted into the cloud assembly on how
 the key should be supplied.
 
-###### `report`<sup>Required</sup> <a name="report" id="cdk-stackset.StackSetStack.reportMissingContextKey.parameter.report"></a>
+###### `report`<sup>Required</sup> <a name="report" id="cdk-stackset.StackSetTemplateStack.reportMissingContextKey.parameter.report"></a>
 
 - *Type:* aws-cdk-lib.cloud_assembly_schema.MissingContext
 
@@ -569,7 +569,7 @@ The set of parameters needed to obtain the context.
 
 ---
 
-##### `resolve` <a name="resolve" id="cdk-stackset.StackSetStack.resolve"></a>
+##### `resolve` <a name="resolve" id="cdk-stackset.StackSetTemplateStack.resolve"></a>
 
 ```typescript
 public resolve(obj: any): any
@@ -577,13 +577,13 @@ public resolve(obj: any): any
 
 Resolve a tokenized value in the context of the current stack.
 
-###### `obj`<sup>Required</sup> <a name="obj" id="cdk-stackset.StackSetStack.resolve.parameter.obj"></a>
+###### `obj`<sup>Required</sup> <a name="obj" id="cdk-stackset.StackSetTemplateStack.resolve.parameter.obj"></a>
 
 - *Type:* any
 
 ---
 
-##### `splitArn` <a name="splitArn" id="cdk-stackset.StackSetStack.splitArn"></a>
+##### `splitArn` <a name="splitArn" id="cdk-stackset.StackSetTemplateStack.splitArn"></a>
 
 ```typescript
 public splitArn(arn: string, arnFormat: ArnFormat): ArnComponents
@@ -596,7 +596,7 @@ and a Token representing a dynamic CloudFormation expression
 (in which case the returned components will also be dynamic CloudFormation expressions,
 encoded as Tokens).
 
-###### `arn`<sup>Required</sup> <a name="arn" id="cdk-stackset.StackSetStack.splitArn.parameter.arn"></a>
+###### `arn`<sup>Required</sup> <a name="arn" id="cdk-stackset.StackSetTemplateStack.splitArn.parameter.arn"></a>
 
 - *Type:* string
 
@@ -604,7 +604,7 @@ the ARN to split into its components.
 
 ---
 
-###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="cdk-stackset.StackSetStack.splitArn.parameter.arnFormat"></a>
+###### `arnFormat`<sup>Required</sup> <a name="arnFormat" id="cdk-stackset.StackSetTemplateStack.splitArn.parameter.arnFormat"></a>
 
 - *Type:* aws-cdk-lib.ArnFormat
 
@@ -612,7 +612,7 @@ the expected format of 'arn' - depends on what format the service 'arn' represen
 
 ---
 
-##### `toJsonString` <a name="toJsonString" id="cdk-stackset.StackSetStack.toJsonString"></a>
+##### `toJsonString` <a name="toJsonString" id="cdk-stackset.StackSetTemplateStack.toJsonString"></a>
 
 ```typescript
 public toJsonString(obj: any, space?: number): string
@@ -620,13 +620,13 @@ public toJsonString(obj: any, space?: number): string
 
 Convert an object, potentially containing tokens, to a JSON string.
 
-###### `obj`<sup>Required</sup> <a name="obj" id="cdk-stackset.StackSetStack.toJsonString.parameter.obj"></a>
+###### `obj`<sup>Required</sup> <a name="obj" id="cdk-stackset.StackSetTemplateStack.toJsonString.parameter.obj"></a>
 
 - *Type:* any
 
 ---
 
-###### `space`<sup>Optional</sup> <a name="space" id="cdk-stackset.StackSetStack.toJsonString.parameter.space"></a>
+###### `space`<sup>Optional</sup> <a name="space" id="cdk-stackset.StackSetTemplateStack.toJsonString.parameter.space"></a>
 
 - *Type:* number
 
@@ -636,23 +636,23 @@ Convert an object, potentially containing tokens, to a JSON string.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#cdk-stackset.StackSetStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-| <code><a href="#cdk-stackset.StackSetStack.isStack">isStack</a></code> | Return whether the given object is a Stack. |
-| <code><a href="#cdk-stackset.StackSetStack.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.isStack">isStack</a></code> | Return whether the given object is a Stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.of">of</a></code> | Looks up the first stack scope in which `construct` is defined. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-stackset.StackSetStack.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-stackset.StackSetTemplateStack.isConstruct"></a>
 
 ```typescript
-import { StackSetStack } from 'cdk-stackset'
+import { StackSetTemplateStack } from 'cdk-stackset'
 
-StackSetStack.isConstruct(x: any)
+StackSetTemplateStack.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
 
-###### `x`<sup>Required</sup> <a name="x" id="cdk-stackset.StackSetStack.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="cdk-stackset.StackSetTemplateStack.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -660,37 +660,37 @@ Any object.
 
 ---
 
-##### `isStack` <a name="isStack" id="cdk-stackset.StackSetStack.isStack"></a>
+##### `isStack` <a name="isStack" id="cdk-stackset.StackSetTemplateStack.isStack"></a>
 
 ```typescript
-import { StackSetStack } from 'cdk-stackset'
+import { StackSetTemplateStack } from 'cdk-stackset'
 
-StackSetStack.isStack(x: any)
+StackSetTemplateStack.isStack(x: any)
 ```
 
 Return whether the given object is a Stack.
 
 We do attribute detection since we can't reliably use 'instanceof'.
 
-###### `x`<sup>Required</sup> <a name="x" id="cdk-stackset.StackSetStack.isStack.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="cdk-stackset.StackSetTemplateStack.isStack.parameter.x"></a>
 
 - *Type:* any
 
 ---
 
-##### `of` <a name="of" id="cdk-stackset.StackSetStack.of"></a>
+##### `of` <a name="of" id="cdk-stackset.StackSetTemplateStack.of"></a>
 
 ```typescript
-import { StackSetStack } from 'cdk-stackset'
+import { StackSetTemplateStack } from 'cdk-stackset'
 
-StackSetStack.of(construct: IConstruct)
+StackSetTemplateStack.of(construct: IConstruct)
 ```
 
 Looks up the first stack scope in which `construct` is defined.
 
 Fails if there is no stack up the tree.
 
-###### `construct`<sup>Required</sup> <a name="construct" id="cdk-stackset.StackSetStack.of.parameter.construct"></a>
+###### `construct`<sup>Required</sup> <a name="construct" id="cdk-stackset.StackSetTemplateStack.of.parameter.construct"></a>
 
 - *Type:* constructs.IConstruct
 
@@ -702,31 +702,31 @@ The construct to start the search from.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-stackset.StackSetStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#cdk-stackset.StackSetStack.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
-| <code><a href="#cdk-stackset.StackSetStack.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
-| <code><a href="#cdk-stackset.StackSetStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
-| <code><a href="#cdk-stackset.StackSetStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
-| <code><a href="#cdk-stackset.StackSetStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
-| <code><a href="#cdk-stackset.StackSetStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
-| <code><a href="#cdk-stackset.StackSetStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
-| <code><a href="#cdk-stackset.StackSetStack.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
-| <code><a href="#cdk-stackset.StackSetStack.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
-| <code><a href="#cdk-stackset.StackSetStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
-| <code><a href="#cdk-stackset.StackSetStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
-| <code><a href="#cdk-stackset.StackSetStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
-| <code><a href="#cdk-stackset.StackSetStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
-| <code><a href="#cdk-stackset.StackSetStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.account">account</a></code> | <code>string</code> | The AWS account into which this stack will be deployed. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.artifactId">artifactId</a></code> | <code>string</code> | The ID of the cloud assembly artifact for this stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | Returns the list of AZs that are available in the AWS environment (account/region) associated with this stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.bundlingRequired">bundlingRequired</a></code> | <code>boolean</code> | Indicates whether the stack requires bundling or not. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.dependencies">dependencies</a></code> | <code>aws-cdk-lib.Stack[]</code> | Return the stacks this stack depends on. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.environment">environment</a></code> | <code>string</code> | The environment coordinates in which this stack is deployed. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.nested">nested</a></code> | <code>boolean</code> | Indicates if this is a nested stack, in which case `parentStack` will include a reference to it's parent. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.notificationArns">notificationArns</a></code> | <code>string[]</code> | Returns the list of notification Amazon Resource Names (ARNs) for the current stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.partition">partition</a></code> | <code>string</code> | The partition in which this stack is defined. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.region">region</a></code> | <code>string</code> | The AWS region into which this stack will be deployed (e.g. `us-west-2`). |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.stackId">stackId</a></code> | <code>string</code> | The ID of the stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.stackName">stackName</a></code> | <code>string</code> | The concrete CloudFormation physical stack name. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.synthesizer">synthesizer</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | Synthesis method for this stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tags to be applied to the stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.templateFile">templateFile</a></code> | <code>string</code> | The name of the CloudFormation template file emitted to the output directory during synthesis. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.templateOptions">templateOptions</a></code> | <code>aws-cdk-lib.ITemplateOptions</code> | Options for CloudFormation template (like version, transform, description). |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.urlSuffix">urlSuffix</a></code> | <code>string</code> | The Amazon domain suffix for the region in which this stack is defined. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.nestedStackParent">nestedStackParent</a></code> | <code>aws-cdk-lib.Stack</code> | If this is a nested stack, returns it's parent stack. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.nestedStackResource">nestedStackResource</a></code> | <code>aws-cdk-lib.CfnResource</code> | If this is a nested stack, this represents its `AWS::CloudFormation::Stack` resource. |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.property.terminationProtection">terminationProtection</a></code> | <code>boolean</code> | Whether termination protection is enabled for this stack. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="cdk-stackset.StackSetStack.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="cdk-stackset.StackSetTemplateStack.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -738,7 +738,7 @@ The tree node.
 
 ---
 
-##### `account`<sup>Required</sup> <a name="account" id="cdk-stackset.StackSetStack.property.account"></a>
+##### `account`<sup>Required</sup> <a name="account" id="cdk-stackset.StackSetTemplateStack.property.account"></a>
 
 ```typescript
 public readonly account: string;
@@ -767,7 +767,7 @@ implement some other region-agnostic behavior.
 
 ---
 
-##### `artifactId`<sup>Required</sup> <a name="artifactId" id="cdk-stackset.StackSetStack.property.artifactId"></a>
+##### `artifactId`<sup>Required</sup> <a name="artifactId" id="cdk-stackset.StackSetTemplateStack.property.artifactId"></a>
 
 ```typescript
 public readonly artifactId: string;
@@ -779,7 +779,7 @@ The ID of the cloud assembly artifact for this stack.
 
 ---
 
-##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="cdk-stackset.StackSetStack.property.availabilityZones"></a>
+##### `availabilityZones`<sup>Required</sup> <a name="availabilityZones" id="cdk-stackset.StackSetTemplateStack.property.availabilityZones"></a>
 
 ```typescript
 public readonly availabilityZones: string[];
@@ -802,7 +802,7 @@ To specify a different strategy for selecting availability zones override this m
 
 ---
 
-##### `bundlingRequired`<sup>Required</sup> <a name="bundlingRequired" id="cdk-stackset.StackSetStack.property.bundlingRequired"></a>
+##### `bundlingRequired`<sup>Required</sup> <a name="bundlingRequired" id="cdk-stackset.StackSetTemplateStack.property.bundlingRequired"></a>
 
 ```typescript
 public readonly bundlingRequired: boolean;
@@ -814,7 +814,7 @@ Indicates whether the stack requires bundling or not.
 
 ---
 
-##### `dependencies`<sup>Required</sup> <a name="dependencies" id="cdk-stackset.StackSetStack.property.dependencies"></a>
+##### `dependencies`<sup>Required</sup> <a name="dependencies" id="cdk-stackset.StackSetTemplateStack.property.dependencies"></a>
 
 ```typescript
 public readonly dependencies: Stack[];
@@ -826,7 +826,7 @@ Return the stacks this stack depends on.
 
 ---
 
-##### `environment`<sup>Required</sup> <a name="environment" id="cdk-stackset.StackSetStack.property.environment"></a>
+##### `environment`<sup>Required</sup> <a name="environment" id="cdk-stackset.StackSetTemplateStack.property.environment"></a>
 
 ```typescript
 public readonly environment: string;
@@ -850,7 +850,7 @@ region/account-agnostic.
 
 ---
 
-##### `nested`<sup>Required</sup> <a name="nested" id="cdk-stackset.StackSetStack.property.nested"></a>
+##### `nested`<sup>Required</sup> <a name="nested" id="cdk-stackset.StackSetTemplateStack.property.nested"></a>
 
 ```typescript
 public readonly nested: boolean;
@@ -862,7 +862,7 @@ Indicates if this is a nested stack, in which case `parentStack` will include a 
 
 ---
 
-##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="cdk-stackset.StackSetStack.property.notificationArns"></a>
+##### `notificationArns`<sup>Required</sup> <a name="notificationArns" id="cdk-stackset.StackSetTemplateStack.property.notificationArns"></a>
 
 ```typescript
 public readonly notificationArns: string[];
@@ -874,7 +874,7 @@ Returns the list of notification Amazon Resource Names (ARNs) for the current st
 
 ---
 
-##### `partition`<sup>Required</sup> <a name="partition" id="cdk-stackset.StackSetStack.property.partition"></a>
+##### `partition`<sup>Required</sup> <a name="partition" id="cdk-stackset.StackSetTemplateStack.property.partition"></a>
 
 ```typescript
 public readonly partition: string;
@@ -886,7 +886,7 @@ The partition in which this stack is defined.
 
 ---
 
-##### `region`<sup>Required</sup> <a name="region" id="cdk-stackset.StackSetStack.property.region"></a>
+##### `region`<sup>Required</sup> <a name="region" id="cdk-stackset.StackSetTemplateStack.property.region"></a>
 
 ```typescript
 public readonly region: string;
@@ -915,7 +915,7 @@ implement some other region-agnostic behavior.
 
 ---
 
-##### `stackId`<sup>Required</sup> <a name="stackId" id="cdk-stackset.StackSetStack.property.stackId"></a>
+##### `stackId`<sup>Required</sup> <a name="stackId" id="cdk-stackset.StackSetTemplateStack.property.stackId"></a>
 
 ```typescript
 public readonly stackId: string;
@@ -935,7 +935,7 @@ The ID of the stack.
 ```
 
 
-##### `stackName`<sup>Required</sup> <a name="stackName" id="cdk-stackset.StackSetStack.property.stackName"></a>
+##### `stackName`<sup>Required</sup> <a name="stackName" id="cdk-stackset.StackSetTemplateStack.property.stackName"></a>
 
 ```typescript
 public readonly stackName: string;
@@ -956,7 +956,7 @@ you can use `Aws.STACK_NAME` directly.
 
 ---
 
-##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="cdk-stackset.StackSetStack.property.synthesizer"></a>
+##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="cdk-stackset.StackSetTemplateStack.property.synthesizer"></a>
 
 ```typescript
 public readonly synthesizer: IStackSynthesizer;
@@ -968,7 +968,7 @@ Synthesis method for this stack.
 
 ---
 
-##### `tags`<sup>Required</sup> <a name="tags" id="cdk-stackset.StackSetStack.property.tags"></a>
+##### `tags`<sup>Required</sup> <a name="tags" id="cdk-stackset.StackSetTemplateStack.property.tags"></a>
 
 ```typescript
 public readonly tags: TagManager;
@@ -980,7 +980,7 @@ Tags to be applied to the stack.
 
 ---
 
-##### `templateFile`<sup>Required</sup> <a name="templateFile" id="cdk-stackset.StackSetStack.property.templateFile"></a>
+##### `templateFile`<sup>Required</sup> <a name="templateFile" id="cdk-stackset.StackSetTemplateStack.property.templateFile"></a>
 
 ```typescript
 public readonly templateFile: string;
@@ -994,7 +994,7 @@ Example value: `MyStack.template.json`
 
 ---
 
-##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="cdk-stackset.StackSetStack.property.templateOptions"></a>
+##### `templateOptions`<sup>Required</sup> <a name="templateOptions" id="cdk-stackset.StackSetTemplateStack.property.templateOptions"></a>
 
 ```typescript
 public readonly templateOptions: ITemplateOptions;
@@ -1006,7 +1006,7 @@ Options for CloudFormation template (like version, transform, description).
 
 ---
 
-##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="cdk-stackset.StackSetStack.property.urlSuffix"></a>
+##### `urlSuffix`<sup>Required</sup> <a name="urlSuffix" id="cdk-stackset.StackSetTemplateStack.property.urlSuffix"></a>
 
 ```typescript
 public readonly urlSuffix: string;
@@ -1018,7 +1018,7 @@ The Amazon domain suffix for the region in which this stack is defined.
 
 ---
 
-##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="cdk-stackset.StackSetStack.property.nestedStackParent"></a>
+##### `nestedStackParent`<sup>Optional</sup> <a name="nestedStackParent" id="cdk-stackset.StackSetTemplateStack.property.nestedStackParent"></a>
 
 ```typescript
 public readonly nestedStackParent: Stack;
@@ -1030,7 +1030,7 @@ If this is a nested stack, returns it's parent stack.
 
 ---
 
-##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="cdk-stackset.StackSetStack.property.nestedStackResource"></a>
+##### `nestedStackResource`<sup>Optional</sup> <a name="nestedStackResource" id="cdk-stackset.StackSetTemplateStack.property.nestedStackResource"></a>
 
 ```typescript
 public readonly nestedStackResource: CfnResource;
@@ -1044,7 +1044,7 @@ If this is a nested stack, this represents its `AWS::CloudFormation::Stack` reso
 
 ---
 
-##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="cdk-stackset.StackSetStack.property.terminationProtection"></a>
+##### `terminationProtection`<sup>Optional</sup> <a name="terminationProtection" id="cdk-stackset.StackSetTemplateStack.property.terminationProtection"></a>
 
 ```typescript
 public readonly terminationProtection: boolean;
@@ -1074,7 +1074,7 @@ const stackSetProps: StackSetProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-stackset.StackSetProps.property.orgId">orgId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-stackset.StackSetProps.property.stack">stack</a></code> | <code><a href="#cdk-stackset.StackSetStack">StackSetStack</a></code> | *No description.* |
+| <code><a href="#cdk-stackset.StackSetProps.property.stack">stack</a></code> | <code><a href="#cdk-stackset.StackSetTemplateStack">StackSetTemplateStack</a></code> | *No description.* |
 | <code><a href="#cdk-stackset.StackSetProps.property.stackSetName">stackSetName</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -1092,10 +1092,10 @@ public readonly orgId: string;
 ##### `stack`<sup>Required</sup> <a name="stack" id="cdk-stackset.StackSetProps.property.stack"></a>
 
 ```typescript
-public readonly stack: StackSetStack;
+public readonly stack: StackSetTemplateStack;
 ```
 
-- *Type:* <a href="#cdk-stackset.StackSetStack">StackSetStack</a>
+- *Type:* <a href="#cdk-stackset.StackSetTemplateStack">StackSetTemplateStack</a>
 
 ---
 

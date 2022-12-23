@@ -5,7 +5,7 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { StackSetSynthesizer } from './stack-set-synthesizer';
 
-export class StackSetStack extends cdk.Stack {
+export class StackSetTemplateStack extends cdk.Stack {
   public readonly templateFile: string;
 
   private _templateUrl?: string;

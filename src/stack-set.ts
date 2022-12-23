@@ -1,11 +1,11 @@
 import * as path from 'path';
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { StackSetStack } from './stack-set-stack';
+import { StackSetTemplateStack } from './stack-set-template-stack';
 
 export interface StackSetProps {
   readonly stackSetName: string;
-  readonly stack: StackSetStack;
+  readonly stack: StackSetTemplateStack;
   readonly orgId: string;
 }
 

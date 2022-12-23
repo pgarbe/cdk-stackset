@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import { Construct } from 'constructs';
-import { StackSet, StackSetStack } from '../src/index';
+import { StackSet, StackSetTemplateStack } from '../src/index';
 
 export class MyDoubleStackSetStack extends cdk.Stack {
 
@@ -41,7 +41,7 @@ export class MyStackSetStack extends cdk.Stack {
   };
 }
 
-export class TargetAccountAStack extends StackSetStack {
+export class TargetAccountAStack extends StackSetTemplateStack {
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -55,7 +55,7 @@ export class TargetAccountAStack extends StackSetStack {
   }
 }
 
-export class TargetAccountBStack extends StackSetStack {
+export class TargetAccountBStack extends StackSetTemplateStack {
 
   constructor(scope: Construct, id: string) {
     super(scope, id);

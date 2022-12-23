@@ -1,7 +1,7 @@
 import { IntegTest } from '@aws-cdk/integ-tests-alpha';
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { StackSet, StackSetStack } from '../src';
+import { StackSet, StackSetTemplateStack } from '../src';
 
 export class StackUnderTest extends cdk.Stack {
 
@@ -18,7 +18,7 @@ export class StackUnderTest extends cdk.Stack {
   };
 }
 
-export class TargetAccountAStack extends StackSetStack {
+export class TargetAccountAStack extends StackSetTemplateStack {
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
