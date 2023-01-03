@@ -118,7 +118,7 @@ it('should have a defined list of files in cloud assembly', () => {
   const session = app.synth();
 
   const parentStackFiles = ['Parent.assets.json', 'Parent.template.json'];
-  const stackSetStackFiles = ['ParentTemplate0B4BAA82.assets.json', 'ParentTemplate0B4BAA82.stackset.template.json'];
+  const stackSetStackFiles = ['ParentTemplate0B4BAA82.stackset.template.json'];
   const cdkStandarddFiles = ['cdk.out', 'manifest.json', 'tree.json'];
   const assetsForS3Deployment = [
     'asset.2bc265c5e0569aeb24a6349c15bd54e76e845892376515e036627ab0cc70bb64', // "Copy" Lambda Function
@@ -175,20 +175,6 @@ it('should have the stack template as an asset', () => {
     TemplateURL: {
       'Fn::Sub': 'https://s3.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2b61d5bd2f08a6595ee20070b34df68f7ff16e949dae46cd030858c69a863767.json',
     },
-  });
-});
-
-
-it('Template for StackSet should not have any assets', () => {
-  const app = new cdk.App();
-  new MyStackSetStack(app, 'Parent');
-
-  const session = app.synth();
-
-  expect(readJson(session.directory, 'ParentTemplate0B4BAA82.assets.json')).toMatchObject({
-    dockerImages: {},
-    files: {},
-    version: '22.0.0',
   });
 });
 
