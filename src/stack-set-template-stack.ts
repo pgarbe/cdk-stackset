@@ -5,46 +5,52 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { StackSetSynthesizer } from './stack-set-synthesizer';
 
+export interface StackSetTemplateStackProps {
+  /**
+      * A Bucket can be passed to store assets, enabling ProductStack Asset support
+      * @default No Bucket provided and Assets will not be supported.
+      */
+  readonly assetBucket?: cdk.aws_s3.IBucket;
+}
+
 export class StackSetTemplateStack extends cdk.Stack {
   public readonly templateFile: string;
 
   private _templateUrl?: string;
   private _parentStack: cdk.Stack;
-  private _sharedFileAssetBucketName?: string;
+  private assetBucket?: cdk.aws_s3.IBucket;
 
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props: StackSetTemplateStackProps = {}) {
     const parentStack = findParentStack(scope);
 
     super(scope, id, {
-      synthesizer: new StackSetSynthesizer(parentStack.synthesizer),
+      synthesizer: new StackSetSynthesizer(props.assetBucket),
     });
 
     this._parentStack = parentStack;
 
     // this is the file name of the synthesized template file within the cloud assembly
     this.templateFile = `${cdk.Names.uniqueId(this)}.stackset.template.json`;
+
+    this.assetBucket = props.assetBucket;
   }
 
   /**
-   * Allows to set the bucket of the StackSetStack synthesizer
-   *
-   * @param bucketName name of bucket for shared assets
-   *
-   * @internal
-   */
-  public _setAssetBucketName(bucketName: string) {
-    this._sharedFileAssetBucketName = bucketName;
+     * Fetch the asset bucket.
+     *
+     * @internal
+     */
+  public _getAssetBucket(): cdk.aws_s3.IBucket | undefined {
+    return this.assetBucket;
   }
 
   /**
-   * Returns all file assets of the StackSet stack
-   *
-   * This list is needed to create an S3 deployment from the CDK bootstrap bucket to a bucket with wider permissions.
+   * Fetch the parent Stack.
    *
    * @internal
    */
-  public _getFileAssets(): cdk.FileAssetSource[] {
-    return (this.synthesizer as StackSetSynthesizer).fileAssets;
+  public _getParentStack(): cdk.Stack {
+    return this._parentStack;
   }
 
   /**
@@ -66,17 +72,7 @@ export class StackSetTemplateStack extends cdk.Stack {
    */
   public _synthesizeTemplate(session: cdk.ISynthesisSession): void {
 
-    let cfn = JSON.stringify(this._toCloudFormation(), undefined, 2);
-
-    const account = this._parentStack.account.indexOf('Token') < 0 ? this._parentStack.account : '${AWS::AccountId}';
-    const region = this._parentStack.region.indexOf('Token') < 0 ? this._parentStack.region : '${AWS::Region}';
-
-    const fileAssetBucketName = `cdk-hnb659fds-assets-${account}-${region}`;
-
-    // Ensure that assets in the template use the shared assets bucket
-    // But in the manifest, all assets needs to be uploaded to the cdk bootstrap bucket
-    cfn = cfn.replace(fileAssetBucketName, this._sharedFileAssetBucketName || '');
-
+    const cfn = JSON.stringify(this._toCloudFormation(), undefined, 2);
     const templateHash = crypto.createHash('sha256').update(cfn).digest('hex');
 
     this._templateUrl = this._parentStack.synthesizer.addFileAsset({

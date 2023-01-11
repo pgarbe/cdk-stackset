@@ -134,9 +134,7 @@
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
         "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-assets-shared-template-stackset"
-          },
+          "S3Bucket": "cdk-stackset-integration-test-stackset-assets",
           "S3Key": "eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8.zip"
         },
         "Role": {

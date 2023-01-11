@@ -1,14 +1,22 @@
 import { IntegTest } from '@aws-cdk/integ-tests-alpha';
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { StackSet, StackSetTemplateStack } from '../src';
+import { StackSet, StackSetTemplateStack, StackSetTemplateStackProps } from '../src';
 
 export class StackUnderTest extends cdk.Stack {
 
   constructor(scope: Construct, id: string, props: cdk.StackProps = {}) {
     super(scope, id, props);
 
-    const template = new TargetAccountAStack(this, 'Template');
+    const assetBucket = new cdk.aws_s3.Bucket(this, 'Assets', {
+      bucketName: `${id.toLocaleLowerCase()}-stackset-assets`,
+      encryption: cdk.aws_s3.BucketEncryption.S3_MANAGED,
+      enforceSSL: true,
+      autoDeleteObjects: true,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    });
+
+    const template = new TargetAccountAStack(this, 'Template', { assetBucket });
 
     new StackSet(this, 'StackSet', {
       stack: template,
@@ -20,8 +28,8 @@ export class StackUnderTest extends cdk.Stack {
 
 export class TargetAccountAStack extends StackSetTemplateStack {
 
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+  constructor(scope: Construct, id: string, props: StackSetTemplateStackProps) {
+    super(scope, id, props);
 
     new cdk.aws_lambda.Function(this, 'Lambda', {
       code: cdk.aws_lambda.Code.fromInline('foobar'),

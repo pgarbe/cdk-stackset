@@ -4,7 +4,7 @@
 
 ### StackSet <a name="StackSet" id="cdk-stackset.StackSet"></a>
 
-L2 construct of a StackSet.
+L2 construct of a StackSet (WIP).
 
 #### Initializers <a name="Initializers" id="cdk-stackset.StackSet.Initializer"></a>
 
@@ -146,7 +146,6 @@ Check whether the given construct is a Resource.
 | <code><a href="#cdk-stackset.StackSet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#cdk-stackset.StackSet.property.env">env</a></code> | <code>aws-cdk-lib.ResourceEnvironment</code> | The environment this resource belongs to. |
 | <code><a href="#cdk-stackset.StackSet.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this resource is defined. |
-| <code><a href="#cdk-stackset.StackSet.property.sharedAssetBucket">sharedAssetBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | *No description.* |
 
 ---
 
@@ -193,16 +192,6 @@ The stack in which this resource is defined.
 
 ---
 
-##### `sharedAssetBucket`<sup>Required</sup> <a name="sharedAssetBucket" id="cdk-stackset.StackSet.property.sharedAssetBucket"></a>
-
-```typescript
-public readonly sharedAssetBucket: IBucket;
-```
-
-- *Type:* aws-cdk-lib.aws_s3.IBucket
-
----
-
 
 ### StackSetTemplateStack <a name="StackSetTemplateStack" id="cdk-stackset.StackSetTemplateStack"></a>
 
@@ -211,13 +200,14 @@ public readonly sharedAssetBucket: IBucket;
 ```typescript
 import { StackSetTemplateStack } from 'cdk-stackset'
 
-new StackSetTemplateStack(scope: Construct, id: string)
+new StackSetTemplateStack(scope: Construct, id: string, props?: StackSetTemplateStackProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-stackset.StackSetTemplateStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#cdk-stackset.StackSetTemplateStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-stackset.StackSetTemplateStack.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-stackset.StackSetTemplateStackProps">StackSetTemplateStackProps</a></code> | *No description.* |
 
 ---
 
@@ -230,6 +220,12 @@ new StackSetTemplateStack(scope: Construct, id: string)
 ##### `id`<sup>Required</sup> <a name="id" id="cdk-stackset.StackSetTemplateStack.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="cdk-stackset.StackSetTemplateStack.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#cdk-stackset.StackSetTemplateStackProps">StackSetTemplateStackProps</a>
 
 ---
 
@@ -1109,6 +1105,37 @@ public readonly stackSetName: string;
 
 ---
 
+### StackSetTemplateStackProps <a name="StackSetTemplateStackProps" id="cdk-stackset.StackSetTemplateStackProps"></a>
+
+#### Initializer <a name="Initializer" id="cdk-stackset.StackSetTemplateStackProps.Initializer"></a>
+
+```typescript
+import { StackSetTemplateStackProps } from 'cdk-stackset'
+
+const stackSetTemplateStackProps: StackSetTemplateStackProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-stackset.StackSetTemplateStackProps.property.assetBucket">assetBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | A Bucket can be passed to store assets, enabling ProductStack Asset support. |
+
+---
+
+##### `assetBucket`<sup>Optional</sup> <a name="assetBucket" id="cdk-stackset.StackSetTemplateStackProps.property.assetBucket"></a>
+
+```typescript
+public readonly assetBucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+- *Default:* No Bucket provided and Assets will not be supported.
+
+A Bucket can be passed to store assets, enabling ProductStack Asset support.
+
+---
+
 ## Classes <a name="Classes" id="Classes"></a>
 
 ### StackSetSynthesizer <a name="StackSetSynthesizer" id="cdk-stackset.StackSetSynthesizer"></a>
@@ -1122,18 +1149,18 @@ Interoperates with the StackSynthesizer of the parent stack.
 ```typescript
 import { StackSetSynthesizer } from 'cdk-stackset'
 
-new StackSetSynthesizer(parentDeployment: IStackSynthesizer)
+new StackSetSynthesizer(assetBucket?: IBucket)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-stackset.StackSetSynthesizer.Initializer.parameter.parentDeployment">parentDeployment</a></code> | <code>aws-cdk-lib.IStackSynthesizer</code> | *No description.* |
+| <code><a href="#cdk-stackset.StackSetSynthesizer.Initializer.parameter.assetBucket">assetBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | *No description.* |
 
 ---
 
-##### `parentDeployment`<sup>Required</sup> <a name="parentDeployment" id="cdk-stackset.StackSetSynthesizer.Initializer.parameter.parentDeployment"></a>
+##### `assetBucket`<sup>Optional</sup> <a name="assetBucket" id="cdk-stackset.StackSetSynthesizer.Initializer.parameter.assetBucket"></a>
 
-- *Type:* aws-cdk-lib.IStackSynthesizer
+- *Type:* aws-cdk-lib.aws_s3.IBucket
 
 ---
 
@@ -1230,7 +1257,6 @@ Synthesize the associated stack to the session.
 | <code><a href="#cdk-stackset.StackSetSynthesizer.property.bootstrapQualifier">bootstrapQualifier</a></code> | <code>string</code> | The qualifier used to bootstrap this stack. |
 | <code><a href="#cdk-stackset.StackSetSynthesizer.property.cloudFormationExecutionRoleArn">cloudFormationExecutionRoleArn</a></code> | <code>string</code> | Returns the ARN of the CFN execution Role. |
 | <code><a href="#cdk-stackset.StackSetSynthesizer.property.deployRoleArn">deployRoleArn</a></code> | <code>string</code> | Returns the ARN of the deploy Role. |
-| <code><a href="#cdk-stackset.StackSetSynthesizer.property.fileAssets">fileAssets</a></code> | <code>aws-cdk-lib.FileAssetSource[]</code> | *No description.* |
 
 ---
 
@@ -1267,16 +1293,6 @@ public readonly deployRoleArn: string;
 - *Type:* string
 
 Returns the ARN of the deploy Role.
-
----
-
-##### `fileAssets`<sup>Required</sup> <a name="fileAssets" id="cdk-stackset.StackSetSynthesizer.property.fileAssets"></a>
-
-```typescript
-public readonly fileAssets: FileAssetSource[];
-```
-
-- *Type:* aws-cdk-lib.FileAssetSource[]
 
 ---
 

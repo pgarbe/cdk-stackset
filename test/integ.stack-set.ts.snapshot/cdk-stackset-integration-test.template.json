@@ -1,6 +1,6 @@
 {
  "Resources": {
-  "StackSetCdkAssetsSharedE95B2E61": {
+  "Assets9A31D427": {
    "Type": "AWS::S3::Bucket",
    "Properties": {
     "BucketEncryption": {
@@ -12,14 +12,14 @@
       }
      ]
     },
-    "BucketName": "cdk-assets-shared-template-stackset",
+    "BucketName": "cdk-stackset-integration-test-stackset-assets",
     "Tags": [
      {
       "Key": "aws-cdk:auto-delete-objects",
       "Value": "true"
      },
      {
-      "Key": "aws-cdk:cr-owned:0cdc2990",
+      "Key": "aws-cdk:cr-owned:67a1cd17",
       "Value": "true"
      }
     ]
@@ -27,11 +27,11 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete"
   },
-  "StackSetCdkAssetsSharedPolicyBEE76B20": {
+  "AssetsPolicy206C37E3": {
    "Type": "AWS::S3::BucketPolicy",
    "Properties": {
     "Bucket": {
-     "Ref": "StackSetCdkAssetsSharedE95B2E61"
+     "Ref": "Assets9A31D427"
     },
     "PolicyDocument": {
      "Statement": [
@@ -49,7 +49,7 @@
        "Resource": [
         {
          "Fn::GetAtt": [
-          "StackSetCdkAssetsSharedE95B2E61",
+          "Assets9A31D427",
           "Arn"
          ]
         },
@@ -59,7 +59,7 @@
           [
            {
             "Fn::GetAtt": [
-             "StackSetCdkAssetsSharedE95B2E61",
+             "Assets9A31D427",
              "Arn"
             ]
            },
@@ -87,7 +87,7 @@
        "Resource": [
         {
          "Fn::GetAtt": [
-          "StackSetCdkAssetsSharedE95B2E61",
+          "Assets9A31D427",
           "Arn"
          ]
         },
@@ -97,45 +97,7 @@
           [
            {
             "Fn::GetAtt": [
-             "StackSetCdkAssetsSharedE95B2E61",
-             "Arn"
-            ]
-           },
-           "/*"
-          ]
-         ]
-        }
-       ]
-      },
-      {
-       "Action": [
-        "s3:GetBucket*",
-        "s3:GetObject*",
-        "s3:List*"
-       ],
-       "Condition": {
-        "StringEquals": {
-         "aws:PrincipalOrgID": "o-asdf"
-        }
-       },
-       "Effect": "Allow",
-       "Principal": {
-        "AWS": "*"
-       },
-       "Resource": [
-        {
-         "Fn::GetAtt": [
-          "StackSetCdkAssetsSharedE95B2E61",
-          "Arn"
-         ]
-        },
-        {
-         "Fn::Join": [
-          "",
-          [
-           {
-            "Fn::GetAtt": [
-             "StackSetCdkAssetsSharedE95B2E61",
+             "Assets9A31D427",
              "Arn"
             ]
            },
@@ -150,7 +112,7 @@
     }
    }
   },
-  "StackSetCdkAssetsSharedAutoDeleteObjectsCustomResourceF95E6CF2": {
+  "AssetsAutoDeleteObjectsCustomResource5BBDE5E5": {
    "Type": "Custom::S3AutoDeleteObjects",
    "Properties": {
     "ServiceToken": {
@@ -160,71 +122,14 @@
      ]
     },
     "BucketName": {
-     "Ref": "StackSetCdkAssetsSharedE95B2E61"
+     "Ref": "Assets9A31D427"
     }
    },
    "DependsOn": [
-    "StackSetCdkAssetsSharedPolicyBEE76B20"
+    "AssetsPolicy206C37E3"
    ],
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete"
-  },
-  "StackSetDeployAwsCliLayerFE5D072B": {
-   "Type": "AWS::Lambda::LayerVersion",
-   "Properties": {
-    "Content": {
-     "S3Bucket": {
-      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-     },
-     "S3Key": "5d8d1d0aacea23824c62f362e1e3c14b7dd14a31c71b53bfae4d14a6373c5510.zip"
-    },
-    "Description": "/opt/awscli/aws"
-   }
-  },
-  "StackSetDeployCustomResource181BDE32": {
-   "Type": "Custom::CDKBucketDeployment",
-   "Properties": {
-    "ServiceToken": {
-     "Fn::GetAtt": [
-      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
-      "Arn"
-     ]
-    },
-    "SourceBucketNames": [
-     {
-      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-     }
-    ],
-    "SourceObjectKeys": [
-     "eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8.zip"
-    ],
-    "DestinationBucketName": {
-     "Ref": "StackSetCdkAssetsSharedE95B2E61"
-    },
-    "Extract": false,
-    "Prune": true
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete"
-  },
-  "StackSet6E6355CF": {
-   "Type": "AWS::CloudFormation::StackSet",
-   "Properties": {
-    "PermissionModel": "SELF_MANAGED",
-    "StackSetName": "MyStackSetStackName",
-    "Capabilities": [
-     "CAPABILITY_NAMED_IAM"
-    ],
-    "ExecutionRoleName": "AWSCloudFormationStackSetExecutionRole",
-    "StackInstancesGroup": [],
-    "TemplateURL": {
-     "Fn::Sub": "https://s3.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fa419f501c6d360eddc9ae74a90daf1338be365fb7966fe1a8a0c5062014133e.json"
-    }
-   },
-   "DependsOn": [
-    "StackSetDeployAwsCliLayerFE5D072B",
-    "StackSetDeployCustomResource181BDE32"
-   ]
   },
   "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
    "Type": "AWS::IAM::Role",
@@ -273,7 +178,7 @@
       [
        "Lambda function for auto-deleting objects in ",
        {
-        "Ref": "StackSetCdkAssetsSharedE95B2E61"
+        "Ref": "Assets9A31D427"
        },
        " S3 bucket."
       ]
@@ -283,6 +188,44 @@
    "DependsOn": [
     "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
    ]
+  },
+  "AssetsBucketDeploymentAwsCliLayer9BCEE17F": {
+   "Type": "AWS::Lambda::LayerVersion",
+   "Properties": {
+    "Content": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "5d8d1d0aacea23824c62f362e1e3c14b7dd14a31c71b53bfae4d14a6373c5510.zip"
+    },
+    "Description": "/opt/awscli/aws"
+   }
+  },
+  "AssetsBucketDeploymentCustomResource283760D6": {
+   "Type": "Custom::CDKBucketDeployment",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+      "Arn"
+     ]
+    },
+    "SourceBucketNames": [
+     {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     }
+    ],
+    "SourceObjectKeys": [
+     "eb5b005c858404ea0c8f68098ed5dcdf5340e02461f149751d10f59c210d5ef8.zip"
+    ],
+    "DestinationBucketName": {
+     "Ref": "Assets9A31D427"
+    },
+    "Extract": false,
+    "Prune": false
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete"
   },
   "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
    "Type": "AWS::IAM::Role",
@@ -378,7 +321,7 @@
        "Resource": [
         {
          "Fn::GetAtt": [
-          "StackSetCdkAssetsSharedE95B2E61",
+          "Assets9A31D427",
           "Arn"
          ]
         },
@@ -388,7 +331,7 @@
           [
            {
             "Fn::GetAtt": [
-             "StackSetCdkAssetsSharedE95B2E61",
+             "Assets9A31D427",
              "Arn"
             ]
            },
@@ -427,7 +370,7 @@
     "Handler": "index.handler",
     "Layers": [
      {
-      "Ref": "StackSetDeployAwsCliLayerFE5D072B"
+      "Ref": "AssetsBucketDeploymentAwsCliLayer9BCEE17F"
      }
     ],
     "Runtime": "python3.9",
@@ -437,6 +380,21 @@
     "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
     "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
    ]
+  },
+  "StackSet6E6355CF": {
+   "Type": "AWS::CloudFormation::StackSet",
+   "Properties": {
+    "PermissionModel": "SELF_MANAGED",
+    "StackSetName": "MyStackSetStackName",
+    "Capabilities": [
+     "CAPABILITY_NAMED_IAM"
+    ],
+    "ExecutionRoleName": "AWSCloudFormationStackSetExecutionRole",
+    "StackInstancesGroup": [],
+    "TemplateURL": {
+     "Fn::Sub": "https://s3.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d1d10008b9fab04a53d57dd94d378774000991915342a7a34c0775e92285aed0.json"
+    }
+   }
   }
  },
  "Parameters": {
