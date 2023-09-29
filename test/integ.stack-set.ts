@@ -1,22 +1,14 @@
 import { IntegTest } from '@aws-cdk/integ-tests-alpha';
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { StackSet, StackSetTemplateStack, StackSetTemplateStackProps } from '../src';
+import { StackSetBootstrapStack, StackSet, StackSetTemplateStack, StackSetTemplateStackProps } from '../src';
 
 export class StackUnderTest extends cdk.Stack {
 
   constructor(scope: Construct, id: string, props: cdk.StackProps = {}) {
     super(scope, id, props);
 
-    const assetBucket = new cdk.aws_s3.Bucket(this, 'Assets', {
-      bucketName: `${id.toLocaleLowerCase()}-stackset-assets`,
-      encryption: cdk.aws_s3.BucketEncryption.S3_MANAGED,
-      enforceSSL: true,
-      autoDeleteObjects: true,
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
-    });
-
-    const template = new TargetAccountAStack(this, 'Template', { assetBucket });
+    const template = new TargetAccountAStack(this, 'Template', { assetRegions: ['eu-west-1'] });
 
     new StackSet(this, 'StackSet', {
       stack: template,
@@ -41,7 +33,8 @@ export class TargetAccountAStack extends StackSetTemplateStack {
 }
 
 const app = new cdk.App();
-const testCase = new StackUnderTest(app, 'cdk-stackset-integration-test', {});
+// const bootstrapStack = new StackSetBootstrapStack(app, 'cdk-stackset-bootstrap', { env: { account: '424144556073', region: 'eu-west-1' } });
+const testCase = new StackUnderTest(app, 'cdk-stackset-integration-test', { env: { account: '424144556073', region: 'eu-west-1' } });
 
 new IntegTest(app, 'IntegTest', {
   testCases: [testCase],

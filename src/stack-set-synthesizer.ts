@@ -1,74 +1,91 @@
-import * as path from 'path';
+/* eslint-disable @typescript-eslint/naming-convention */
 import * as cdk from 'aws-cdk-lib';
 import { StackSetTemplateStack } from './stack-set-template-stack';
 
 /**
- * Deployment environment for an AWS StackSet stack.
+ * Synthesizer for StackSetStack stacks.
  *
- * Interoperates with the StackSynthesizer of the parent stack.
+ * It works only with StackSetStack (which is a nested Stack).
+ * File Assets will be added as assets to the parent stack.
+ *
+ * In addition, it creates a BucketDeployment to copy these
+ * assets from the parent's asset bucket to a given bucket
+ * to support cross-account and cross-region usage.
+ *
  */
 export class StackSetSynthesizer extends cdk.DefaultStackSynthesizer {
-  private readonly assetBucket?: cdk.aws_s3.IBucket;
-  private bucketDeployment?: cdk.aws_s3_deployment.BucketDeployment;
+  private readonly assetBucketQualifier?: string;
+  private readonly regions?: string[];
+  private bucketDeployments: Record<string, cdk.aws_s3_deployment.BucketDeployment> = {};
 
-  constructor(assetBucket?: cdk.aws_s3.IBucket) {
+  constructor(regions?: string[], assetBucketQualifier?: string) {
     super();
-    this.assetBucket = assetBucket;
+
+    this.assetBucketQualifier = assetBucketQualifier;
+    this.regions = regions;
   }
 
   public addFileAsset(asset: cdk.FileAssetSource): cdk.FileAssetLocation {
-    if (!this.assetBucket) {
-      throw new Error('An Asset Bucket must be provided to use Assets');
+    if (!this.regions) {
+      throw new Error('Regions must be provided to use Assets');
     }
+    const parentStack = (this.boundStack as StackSetTemplateStack)._getParentStack();
+    const accountId = parentStack.account;
+    if (cdk.Token.isUnresolved(accountId)) {
+      throw new Error(
+        'AccountId can not be an unresolved token. Ensure that you are setting "env" properties on the stack, and passing the props to the super() call',
+      );
+    }
+
+    const assetBucket = `${this.assetBucketQualifier ?? 'cdk'}-assets-shared-${accountId}`;
+
     const outdir = cdk.App.of(this.boundStack)?.outdir ?? 'cdk.out';
-    const assetPath = `${outdir}/${asset.fileName}`; // was `./${outdir}/${asset.fileName}`
+    const assetPath = `${outdir}/${asset.fileName}`;
 
-    if (!this.bucketDeployment) {
-      const parentStack = (this.boundStack as StackSetTemplateStack)._getParentStack();
-      if (!cdk.Resource.isOwnedResource(this.assetBucket)) {
-        cdk.Annotations.of(parentStack).addWarning('[WARNING] Bucket Policy Permissions cannot be added to' +
-          ' referenced Bucket. Please make sure your bucket has the correct permissions');
+    this.regions.forEach((region) => {
+      if (!this.bucketDeployments[region]) {
+        const destinationBucket = cdk.aws_s3.Bucket.fromBucketName(
+          parentStack,
+          `DestBucket${region.replace('-', '')}`,
+          `${assetBucket}-${region}`,
+        );
+        this.bucketDeployments[region] = new cdk.aws_s3_deployment.BucketDeployment(
+          parentStack,
+          `AssetsBucketDeployment${region.replace('-', '')}`,
+          {
+            sources: [cdk.aws_s3_deployment.Source.asset(assetPath)],
+            destinationBucket,
+            extract: false,
+            prune: false,
+          },
+        );
+      } else {
+        this.bucketDeployments[region].addSource(cdk.aws_s3_deployment.Source.asset(assetPath));
       }
+    });
 
-      this.bucketDeployment = new cdk.aws_s3_deployment.BucketDeployment(parentStack, 'AssetsBucketDeployment', {
-        sources: [cdk.aws_s3_deployment.Source.asset(assetPath)],
-        destinationBucket: this.assetBucket,
-        extract: false,
-        prune: false,
-      });
-
-    } else {
-      this.bucketDeployment.addSource(cdk.aws_s3_deployment.Source.asset(assetPath));
-    }
-
-    const physicalName = this.physicalNameOfBucket(this.assetBucket);
-
-    const bucketName = physicalName;
+    const assetBucketWithRegion = cdk.Fn.join('-', [assetBucket, this.boundStack.region]);
     if (!asset.fileName) {
       throw new Error('Asset file name is undefined');
     }
-    const assetFileBaseName = path.basename(asset.fileName);
-    const s3Filename = assetFileBaseName.split('.')[1] + '.zip';
+
+    const assetFileBaseName = cdk.FileSystem.fingerprint(assetPath);
+    const s3Filename = assetFileBaseName + '.zip';
 
     const objectKey = `${s3Filename}`;
-    const s3ObjectUrl = `s3://${bucketName}/${objectKey}`;
-    const httpUrl = `https://s3.${bucketName}/${objectKey}`;
+    const s3ObjectUrl = `s3://${assetBucketWithRegion}/${objectKey}`;
+    const httpUrl = `https://s3.${assetBucketWithRegion}/${objectKey}`;
 
-    return { bucketName, objectKey, httpUrl, s3ObjectUrl };
-    // return { bucketName, objectKey, httpUrl, s3ObjectUrl, s3Url: httpUrl };
+    return { bucketName: assetBucketWithRegion, objectKey, httpUrl, s3ObjectUrl };
   }
 
-  private physicalNameOfBucket(bucket: cdk.aws_s3.IBucket) {
-    let resolvedName;
-    if (cdk.Resource.isOwnedResource(bucket)) {
-      resolvedName = cdk.Stack.of(bucket).resolve((bucket.node.defaultChild as cdk.aws_s3.CfnBucket).bucketName);
-    } else {
-      resolvedName = bucket.bucketName;
-    }
-    if (resolvedName === undefined) {
-      throw new Error('A bucketName must be provided to use Assets');
-    }
-    return resolvedName;
+  /**
+   * Fetch the BucketDeployment
+   *
+   * @internal
+   */
+  public _getBucketDeployments(): Record<string, cdk.aws_s3_deployment.BucketDeployment> | undefined {
+    return this.bucketDeployments;
   }
 
   public addDockerImageAsset(_asset: cdk.DockerImageAssetSource): cdk.DockerImageAssetLocation {

@@ -10,17 +10,18 @@ const project = new pj.awscdk.AwsCdkConstructLibrary({
 
   projenrcTs: true,
 
-  cdkVersion: '2.55.1',
+  cdkVersion: '2.99.0',
+  jsiiVersion: '~5.0.0',
   devDeps: ['@aws-cdk/integ-tests-alpha', '@aws-cdk/integ-runner'],
 });
 
 project.addGitIgnore('cdk-integ.out.*.snapshot');
 
 project.addTask('integ:update', {
-  exec: 'npx integ-runner --app="ts-node {filePath}" --parallel-regions eu-central-1 --test-regex \'.*integ\\.[\\w\\d-]*.ts$\' --update-on-failed -v -v -v -v --force',
+  exec: 'npx integ-runner --parallel-regions eu-west-1 -l typescript --update-on-failed',
 });
-project.testTask.spawn(project.addTask('integ', {
-  exec: 'npx integ-runner --app="ts-node {filePath}" --parallel-regions eu-central-1 --test-regex \'.*integ\\.[\\w\\d-]*.ts$\'',
-}));
+project.addTask('integ', {
+  exec: 'npx integ-runner --parallel-regions eu-west-1 -l typescript ',
+});
 
 project.synth();
